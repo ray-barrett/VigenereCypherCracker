@@ -56,6 +56,11 @@ class FrequencyAnalysis(object):
     def frequencyMatchScore(self, message):
         freq_order = self.charFrequencyOrder(message)
 
+        # While there are more complex methods of finding the match score,
+        # it seems that just checking if the 6 most/least frequent letters in
+        # the sorted frequencies match any of the 6 most/least frequent letters
+        # in the chosen alphabet then it's a reasonably accurate indication of
+        # the match score.
         score = 0
         for char in self.sorted_freqs[:6]:
             if char in freq_order[:6]:

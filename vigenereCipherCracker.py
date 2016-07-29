@@ -13,7 +13,7 @@ class VigenereCipherCracker(object):
     __alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     # The maximum number of the most frequent letters to
     __MAX_FREQ_LETTERS = 3
-    __MAX_KEY_LENGTH = 12
+    __MAX_KEY_LENGTH = 6
 
     def __init__(self, alphabet=__alphabet, max_key_len=__MAX_KEY_LENGTH):
         super(VigenereCipherCracker, self).__init__()
@@ -173,58 +173,46 @@ class VigenereCipherCracker(object):
                 decrypted_msg = VigenereCipher().decrypt(possible_key, message)
                 if DetectEnglish().isEnglish(decrypted_msg, wordPercentage=60):
                     print possible_key
-                    print decrypted_msg
+                    return decrypted_msg
 
         return None
 
 
 def main():
-    # cipher_string = """
-    #     Adiz Avtzqeci Tmzubb wsa m Pmilqev halpqavtakuoi, lgouqdaf,
-    #     kdmktsvmztsl, izr xoexghzr kkusitaaf. Vz wsa twbhdg ubalmmzhdad
-    #     qz hce vmhsgohuqbo ox kaakulmd gxiwvos, krgdurdny i rcmmstugvtawz
-    #     ca tzm ocicwxfg jf "stscmilpy" oid "uwydptsbuci" wabt hce Lcdwig
-    #     eiovdnw. Bgfdny qe kddwtk qjnkqpsmev ba pz tzm roohwz at xoexghzr
-    #     kkusicw izr vrlqrwxist uboedtuuznum. Pimifo Icmlv Emf DI, Lcdwig owdyzd
-    #     xwd hce Ywhsmnemzh Xovm mby Cqxtsm Supacg (GUKE) oo Bdmfqclwg Bomk,
-    #     Tzuhvif'a ocyetzqofifo ositjm. Rcm a lqys ce oie vzav wr Vpt 8, lpq
-    #     gzclqab mekxabnittq tjr Ymdavn fihog cjgbhvnstkgds. Zm psqikmp o iuejqf
-    #     jf lmoviiicqg aoj jdsvkavs Uzreiz qdpzmdg, dnutgrdny bts helpar jf lpq
-    #     pjmtm, mb zlwkffjmwktoiiuix avczqzs ohsb ocplv nuby swbfwigk naf ohw
-    #     Mzwbms umqcifm. Mtoej bts raj pq kjrcmp oo tzm Zooigvmz Khqauqvl
-    #     Dincmalwdm, rhwzq vz cjmmhzd gvq ca tzm rwmsl lqgdgfa rcm a kbafzd-
-    #     hzaumae kaakulmd, hce SKQ. Wi 1948 Tmzubb jgqzsy Msf Zsrmsv'e Qjmhcfwig
-    #     Dincmalwdm vt Eizqcekbqf Pnadqfnilg, ivzrw pq onsaafsy if bts
-    #     yenmxckmwvf ca tzm Yoiczmehzr uwydptwze oid tmoohe avfsmekbqr dn
-    #     eifvzmsbuqvl tqazjgq. Pq kmolm m dvpwz ab ohw ktshiuix pvsaa at
-    #     hojxtcbefmewn, afl bfzdakfsy okkuzgalqzu xhwuuqvl jmmqoigve gpcz ie hce
-    #     Tmxcpsgd-Lvvbgbubnkq zqoxtawz, kciup isme xqdgo otaqfqev qz hce 1960k.
-    #     Bgfdny'a tchokmjivlabk fzsmtfsy if i ofdmavmz krgaqqptawz wi 1952, wzmz
-    #     vjmgaqlpad iohn wwzq goidt uzgeyix wi tzm Gbdtwl Wwigvwy. Vz aukqdoev
-    #     bdsvtemzh rilp rshadm tcmmgvqg (xhwuuqvl uiehmalqab) vs sv mzoejvmhdvw
-    #     ba dmikwz. Hpravs rdev qz 1954, xpsl whsm tow iszkk jqtjrw pug 42id
-    #     tqdhcdsg, rfjm ugmbddw xawnofqzu. Vn avcizsl lqhzreqzsy tzif vds vmmhc
-    #     wsa eidcalq; vds ewfvzr svp gjmw wfvzrk jqzdenmp vds vmmhc wsa
-    #     mqxivmzhvl. Gv 10 Esktwunsm 2009, fgtxcrifo mb Dnlmdbzt uiydviyv,
-    #     Nfdtaat Dmiem Ywiikbqf Bojlab Wrgez avdw iz cafakuog pmjxwx ahwxcby gv
-    #     nscadn at ohw Jdwoikp scqejvysit xwd "hce sxboglavs kvy zm ion
-    #     tjmmhzd." Sa at Haq 2012 i bfdvsbq azmtmd'g widt ion bwnafz tzm Tcpsw
-    #     wr Zjrva ivdcz eaigd yzmbo Tmzubb a kbmhptgzk dvrvwz wa efiohzd.
-    # """
+    cipher_string = """
+        Adiz Avtzqeci Tmzubb wsa m Pmilqev halpqavtakuoi, lgouqdaf,
+        kdmktsvmztsl, izr xoexghzr kkusitaaf. Vz wsa twbhdg ubalmmzhdad
+        qz hce vmhsgohuqbo ox kaakulmd gxiwvos, krgdurdny i rcmmstugvtawz
+        ca tzm ocicwxfg jf "stscmilpy" oid "uwydptsbuci" wabt hce Lcdwig
+        eiovdnw. Bgfdny qe kddwtk qjnkqpsmev ba pz tzm roohwz at xoexghzr
+        kkusicw izr vrlqrwxist uboedtuuznum. Pimifo Icmlv Emf DI, Lcdwig owdyzd
+        xwd hce Ywhsmnemzh Xovm mby Cqxtsm Supacg (GUKE) oo Bdmfqclwg Bomk,
+        Tzuhvif'a ocyetzqofifo ositjm. Rcm a lqys ce oie vzav wr Vpt 8, lpq
+        gzclqab mekxabnittq tjr Ymdavn fihog cjgbhvnstkgds. Zm psqikmp o iuejqf
+        jf lmoviiicqg aoj jdsvkavs Uzreiz qdpzmdg, dnutgrdny bts helpar jf lpq
+        pjmtm, mb zlwkffjmwktoiiuix avczqzs ohsb ocplv nuby swbfwigk naf ohw
+        Mzwbms umqcifm. Mtoej bts raj pq kjrcmp oo tzm Zooigvmz Khqauqvl
+        Dincmalwdm, rhwzq vz cjmmhzd gvq ca tzm rwmsl lqgdgfa rcm a kbafzd-
+        hzaumae kaakulmd, hce SKQ. Wi 1948 Tmzubb jgqzsy Msf Zsrmsv'e Qjmhcfwig
+        Dincmalwdm vt Eizqcekbqf Pnadqfnilg, ivzrw pq onsaafsy if bts
+        yenmxckmwvf ca tzm Yoiczmehzr uwydptwze oid tmoohe avfsmekbqr dn
+        eifvzmsbuqvl tqazjgq. Pq kmolm m dvpwz ab ohw ktshiuix pvsaa at
+        hojxtcbefmewn, afl bfzdakfsy okkuzgalqzu xhwuuqvl jmmqoigve gpcz ie hce
+        Tmxcpsgd-Lvvbgbubnkq zqoxtawz, kciup isme xqdgo otaqfqev qz hce 1960k.
+        Bgfdny'a tchokmjivlabk fzsmtfsy if i ofdmavmz krgaqqptawz wi 1952, wzmz
+        vjmgaqlpad iohn wwzq goidt uzgeyix wi tzm Gbdtwl Wwigvwy. Vz aukqdoev
+        bdsvtemzh rilp rshadm tcmmgvqg (xhwuuqvl uiehmalqab) vs sv mzoejvmhdvw
+        ba dmikwz. Hpravs rdev qz 1954, xpsl whsm tow iszkk jqtjrw pug 42id
+        tqdhcdsg, rfjm ugmbddw xawnofqzu. Vn avcizsl lqhzreqzsy tzif vds vmmhc
+        wsa eidcalq; vds ewfvzr svp gjmw wfvzrk jqzdenmp vds vmmhc wsa
+        mqxivmzhvl. Gv 10 Esktwunsm 2009, fgtxcrifo mb Dnlmdbzt uiydviyv,
+        Nfdtaat Dmiem Ywiikbqf Bojlab Wrgez avdw iz cafakuog pmjxwx ahwxcby gv
+        nscadn at ohw Jdwoikp scqejvysit xwd "hce sxboglavs kvy zm ion
+        tjmmhzd." Sa at Haq 2012 i bfdvsbq azmtmd'g widt ion bwnafz tzm Tcpsw
+        wr Zjrva ivdcz eaigd yzmbo Tmzubb a kbmhptgzk dvrvwz wa efiohzd.
+    """
 
-    # cipher_string = '''
-    # feuowvwn zeldsr xbcm kmfito aicksl xbcm wvsywc. odnsgev dc bmbb lwdhej kbd
-    # mcs tzsg cgns. tzyigz rwm ekr bmd vano peyeb tg lslaoje. lrs pdkm epsgtk
-    # lit fyh ofvm tzkh. il cwtk lsfgbs mw xcw.
-    # '''
-
-    cipher_string = '''dkjtubls xkaiqx mgas zrdoit yorpqr mgas
-laqelh. mjcxekk ia hbgz rlifky pzj bhq zoxe
-ivsq. zodgmo wus tpp, hbi tgct nknjz zv
-qqrpthk. awq vspk kexezz, qgz udf uuak
-zopf, oa huzz qqlvgq sl cac.'''
-
-    decoded_cipher = VigenereCipherCracker(max_key_len=6).decode_cipher(cipher_string)
+    decoded_cipher = VigenereCipherCracker().decode_cipher(cipher_string)
 
     if decoded_cipher is not None:
         print "Decoded Message:"
